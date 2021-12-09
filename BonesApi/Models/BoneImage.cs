@@ -13,7 +13,7 @@ namespace BonesApi.Models
         [StringLength(50)]
         public string imageName { get; set; } = null!;
 
-        [StringLength(50)]
+        [StringLength(999)]
         public string path { get; set; } = null!;
     }
 }
