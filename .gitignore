@@ -1,1 +1,6 @@
-/.idea/
+.idea/
+BonesApi/obj/
+BonesApi/bin/
+BonesApi/Migrations/
+BonesApi/Database/BonesDB.db-wal
+BonesApi/Database/BonesDB.db-shm
