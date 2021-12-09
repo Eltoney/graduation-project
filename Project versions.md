@@ -9,7 +9,7 @@ A working 1.0 version of the project should have:
     - [ ] An area that displays the **numeric range** result of the model.
 
 - Back-end: 
-    - [ ] The backend should have a simple interface (API) that the front-end can easily access and send the image to.
+    - [x] The backend should have a simple interface (API) that the front-end can easily access and send the image to.
     - [ ] The interface should pass the image to some image checking functions in the core (check if the image is grayscale or not, check the resolution, etc.)
     - [ ] Send the image to the core (image checker and adjustment functions) and expect a **numberic range** result.
     - [ ] Send the result back to the front-end to be displayed.
