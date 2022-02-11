@@ -59,7 +59,7 @@ namespace GraduateProject.contexts
                 entity.Property(e => e.EmailAddress)
                     .HasMaxLength(50)
                     .IsUnicode(false)
-                    .HasColumnName("emailAddress");
+                        .HasColumnName("emailAddress");
 
                 entity.Property(e => e.Password)
                     .HasMaxLength(64)
@@ -67,7 +67,7 @@ namespace GraduateProject.contexts
                     .HasColumnName("password");
 
                 entity.Property(e => e.UserName)
-                    .HasMaxLength(30)
+                    .HasMaxLength(32)
                     .HasColumnName("userName")
                     .IsFixedLength();
                 entity.Property(e => e.FirstName).HasMaxLength(30).HasColumnName("firstName").IsFixedLength();
@@ -79,7 +79,7 @@ namespace GraduateProject.contexts
                 entity.ToTable("tasks");
 
                 entity.Property(t => t.TaskID).HasColumnName("taskID");
-                entity.Property(t => t.ImageName);
+                entity.Property(t => t.ImageLocation);
                 entity.Property(t => t.AppliedAt);
                 entity.Property(t => t.UserID);
                 entity.Property(t => t.CurrentState);
@@ -88,7 +88,7 @@ namespace GraduateProject.contexts
                 entity.HasOne(t => t.User)
                     .WithMany(u => u.Tasks)
                     .HasForeignKey(t => t.UserID)
-                    .HasConstraintName("FK_tasks_Us ers");
+                    .HasConstraintName("FK_tasks_Users");
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -94,10 +94,6 @@ public interface IUserService
                     Username = newUser.UserName
                 };
             }
-            else
-            {
-            }
-
             message = "Failed To Register Please Try Again Later";
             return null;
         }

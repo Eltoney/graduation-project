@@ -2296,19 +2296,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ali elmorsy\\.nuget\\packages\\": {}
+    "C:\\Users\\Ali Elmorsy\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\works\\c#\\GraduateProject\\GraduateProject\\GraduateProject.csproj",
+      "projectUniqueName": "D:\\works\\c#\\GraduateProject\\GraduateProject\\GraduateProject.csproj",
       "projectName": "GraduateProject",
-      "projectPath": "E:\\works\\c#\\GraduateProject\\GraduateProject\\GraduateProject.csproj",
-      "packagesPath": "C:\\Users\\ali elmorsy\\.nuget\\packages\\",
-      "outputPath": "E:\\works\\c#\\GraduateProject\\GraduateProject\\obj\\",
+      "projectPath": "D:\\works\\c#\\GraduateProject\\GraduateProject\\GraduateProject.csproj",
+      "packagesPath": "C:\\Users\\Ali Elmorsy\\.nuget\\packages\\",
+      "outputPath": "D:\\works\\c#\\GraduateProject\\GraduateProject\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ali elmorsy\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Ali Elmorsy\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"

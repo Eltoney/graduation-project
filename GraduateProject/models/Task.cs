@@ -4,7 +4,7 @@ public class Task
 {
     public int TaskID { set; get; }
 
-    public string ImageName { get; set; }
+    public string ImageLocation { get; set; }
 
     public CurrentState CurrentState { get; set; }
 
