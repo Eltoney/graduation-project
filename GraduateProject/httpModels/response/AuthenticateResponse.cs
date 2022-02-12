@@ -2,7 +2,7 @@
 
 namespace GraduateProject.httpModels.response;
 
-public class AuthenticateResponse : IResult
+public class AuthenticateResponse 
 {
     public string FirstName { get; set; }
     public string LastName { get; set; }

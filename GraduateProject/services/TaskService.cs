@@ -1,18 +1,19 @@
 ﻿using GraduateProject.httpModels;
 using GraduateProject.httpModels.response;
+using GraduateProject.models;
 
 namespace GraduateProject.services;
 
 public interface ITaskService
 {
-    bool CreateTask(TaskRequest taskRequest);
+    int CreateTask(string imageLocation, User user, out string message);
 
     TaskState CheckTask(int id);
 }
 
-public class TaskService : ITaskService
+class TaskService : ITaskService
 {
-    public bool CreateTask(TaskRequest taskRequest)
+    public int CreateTask(string imageLocation, User user, out string message)
     {
         throw new NotImplementedException();
     }

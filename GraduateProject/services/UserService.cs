@@ -17,7 +17,8 @@ public interface IUserService
     void Update(int id, UpdateRequest model);
     void Delete(int id);
 
-
+    User? CheckAuthentication(string? token);
+    
     class UserService : IUserService
     {
         private DetectionProjectContext _context;
@@ -25,7 +26,6 @@ public interface IUserService
         public UserService(DetectionProjectContext context)
         {
             _context = context;
-   
         }
 
         public AuthenticateResponse? Authenticate(AuthenticateRequest model, out string message)
@@ -55,6 +55,7 @@ public interface IUserService
             if (CommonUtils.CheckStrings(model.FirstName, model.Password, model.EmailAddress))
             {
                 message = "Missing Variables";
+                return null;
             }
 
             var tmpUser = _context.Users.SingleOrDefault(u => model.Username == u.UserName);
@@ -94,6 +95,7 @@ public interface IUserService
                     Username = newUser.UserName
                 };
             }
+
             message = "Failed To Register Please Try Again Later";
             return null;
         }
@@ -115,6 +117,11 @@ public interface IUserService
         }
 
         public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public User CheckAuthentication(string? token)
         {
             throw new NotImplementedException();
         }

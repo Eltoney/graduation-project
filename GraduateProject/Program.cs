@@ -5,12 +5,12 @@ using GraduateProject.utils;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
-
+//Create Image Files Folder If Not Exists
+System.IO.Directory.CreateDirectory("images");
 
 {
     var services = builder.Services;
-    
+
     services.AddDbContext<DetectionProjectContext>(optionsAction =>
     {
         optionsAction.UseSqlServer(builder.Configuration.GetConnectionString("databaseConnection"));
@@ -28,6 +28,7 @@ var builder = WebApplication.CreateBuilder(args);
     //Scopes Area; using for add services to controllers 
     {
         services.AddScoped<IUserService, IUserService.UserService>();
+        services.AddScoped<ITaskService, TaskService>();
     }
 }
 
@@ -38,7 +39,6 @@ var app = builder.Build();
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 
 
 // configure HTTP request pipeline
@@ -58,14 +58,12 @@ var app = builder.Build();
 if (builder.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
-
 }
 else
 {
     app.UseExceptionHandler("/Error");
     app.UseHsts();
 }
-
 
 
 app.Run();
