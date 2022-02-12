@@ -20,6 +20,13 @@ public class TaskController : Controller
         _taskService = taskService;
     }
 
+    /// <summary>
+    /// It's a post request for creating a task to analyse the picture.
+    /// It starts with checking the session token which this time sent as cookie which its the best way to add session token to request, then check the file in several ways to ensure the uploaded file is image
+    /// Then Save the image and copy it to images folder then notify the python  API with the task 
+    /// </summary>
+    /// <param name="file">The Uploaded File</param>
+    /// <returns>Returns Response whether success or fail</returns>
     [HttpPost("CreateTask")]
     public async Task<Response> CreateTask(IFormFile file)
     {
@@ -37,6 +44,7 @@ public class TaskController : Controller
         }
 
         var ext = Path.GetExtension(file.FileName);
+
         if (!CommonUtils.CheckStrings(file.ContentType) || CommonUtils.CheckImageExt(ext))
         {
             System.IO.File.Delete(file.FileName);
@@ -49,8 +57,11 @@ public class TaskController : Controller
 
         var guid = Convert.ToString(Guid.NewGuid());
         var imageLocation = Path.Combine("images", $"{guid}.{ext}");
+
         await file.CopyToAsync(new FileStream(imageLocation, FileMode.Create, FileAccess.ReadWrite));
+
         int taskId = _taskService.CreateTask(imageLocation, user, out string message);
+
         return new Response()
         {
             IsSuccess = taskId != -1,

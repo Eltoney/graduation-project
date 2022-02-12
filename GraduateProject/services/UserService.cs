@@ -1,24 +1,40 @@
-﻿using System.Linq;
-using GraduateProject.contexts;
+﻿using GraduateProject.contexts;
 using GraduateProject.httpModels;
 using GraduateProject.httpModels.response;
 using GraduateProject.models;
 using GraduateProject.utils;
-using Microsoft.VisualBasic.CompilerServices;
 
 namespace GraduateProject.services;
 
 public interface IUserService
 {
+    /// <summary>
+    /// Make the login operation by check UserName and Password and if matches create a session token and store it in database
+    /// </summary>
+    /// <param name="model">The User data model</param>
+    /// <returns>Returns AuthenticateResult or null if not authorized login</returns>
     AuthenticateResponse? Authenticate(AuthenticateRequest model, out string message);
+
     IEnumerable<User> GetAll();
     User GetById(int id);
+
+    /// <summary>
+    /// Register The User in Database and make a normal login after
+    /// </summary>
+    /// <param name="model">The User data model</param>
+    /// <returns>Return The User Data</returns>
     AuthenticateResponse? Register(AuthenticateRequest model, out string s);
+
     void Update(int id, UpdateRequest model);
     void Delete(int id);
 
+    /// <summary>
+    /// To Check if user is authorized or not
+    /// </summary>
+    /// <param name="token">the session token of the user</param>
+    /// <returns>The Authorized User or null if not authorized</returns>
     User? CheckAuthentication(string? token);
-    
+
     class UserService : IUserService
     {
         private DetectionProjectContext _context;
@@ -79,7 +95,7 @@ public interface IUserService
             if (isSucceed != 0)
             {
                 String token = CommonUtils.CreateTokenSession(newUser);
-                _context.Tokens.Add(new Token()
+                _context.Tokens.Add(new Token
                 {
                     Token1 = token,
                     UserId = newUser.userID
