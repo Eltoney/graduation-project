@@ -6,10 +6,10 @@ public class Task
 
     public string ImageLocation { get; set; }
 
-    public CurrentState CurrentState { get; set; }
+    public CurrentState CurrentState { get; set; } = CurrentState.Idle;
 
 
-    public DateTime AppliedAt { get; set; }
+    public DateTime AppliedAt { get; set; } = DateTime.Now;
 
     public int UserID { set; get; }
 
