@@ -1,4 +1,5 @@
 ﻿using GraduateProject.httpModels;
+using GraduateProject.httpModels.requests;
 using GraduateProject.httpModels.response;
 using GraduateProject.services;
 using GraduateProject.utils;
@@ -25,12 +26,13 @@ public class TaskController : Controller
     /// It starts with checking the session token which this time sent as cookie which its the best way to add session token to request, then check the file in several ways to ensure the uploaded file is image
     /// Then Save the image and copy it to images folder then notify the python  API with the task 
     /// </summary>
-    /// <param name="file">The Uploaded File</param>
+    /// <param name="model">The Uploaded Model</param>
     /// <returns>Returns Response whether success or fail</returns>
     [HttpPost("CreateTask")]
-    public async Task<Response> CreateTask(IFormFile file)
+    public async Task<Response> CreateTask([FromForm] UploadImageModel model)
     {
-        var sessionToken = Request.Cookies["sessionToken"];
+        var file = model.Image;
+        var sessionToken = model.SessionToken;
         var user = _userService.CheckAuthentication(sessionToken);
 
         if (user == null)
@@ -70,10 +72,22 @@ public class TaskController : Controller
         };
     }
 
-    [HttpPost("CheckState")]
-    public Response CheckState()
+    [HttpGet("CheckState/{id}")]
+    public Response CheckState(int id)
     {
-        return null;
+        var sessionToken = Request.Cookies["sessionToken"];
+        var user = _userService.CheckAuthentication(sessionToken);
+
+        if (user == null)
+        {
+            return new Response()
+            {
+                IsSuccess = false,
+                Message = "Not Authorized"
+            };
+        }
+
+        return new Response();
     }
 
     [HttpPost]

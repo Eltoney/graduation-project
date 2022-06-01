@@ -15,12 +15,11 @@ namespace GraduateProject.Controllers;
 public class AuthController : Controller
 {
     private readonly IUserService _userService;
-    
+
 
     public AuthController(IUserService userService)
     {
         _userService = userService;
-        
     }
 
 
@@ -40,6 +39,8 @@ public class AuthController : Controller
     [HttpPost("register")]
     public Response Register([FromBody] AuthenticateRequest user)
     {
+        Console.WriteLine(user.ToString());
+
         var result = _userService.Register(user, out string message);
         return new Response()
         {
@@ -52,8 +53,7 @@ public class AuthController : Controller
     [HttpGet()]
     [HttpPost()]
     public IActionResult Index()
-    {   
-        
+    {
         return BadRequest();
     }
 }

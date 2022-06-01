@@ -1,6 +1,10 @@
-﻿using GraduateProject.httpModels;
+﻿using System.Text.Json;
+using GraduateProject.contexts;
+using GraduateProject.httpModels;
 using GraduateProject.httpModels.response;
 using GraduateProject.models;
+using Task = GraduateProject.models.Task;
+using SimpleConnector;
 
 namespace GraduateProject.services;
 
@@ -29,13 +33,68 @@ public interface ITaskService
 
 class TaskService : ITaskService
 {
+    private readonly DetectionProjectContext _dbcontext;
+
+    public TaskService(DetectionProjectContext dbcontext)
+    {
+        _dbcontext = dbcontext;
+    }
+
     public int CreateTask(string imageLocation, User user, out string message)
     {
-        throw new NotImplementedException();
+        var newTask = new Task
+        {
+            UserID = user.userID,
+            ImageLocation = imageLocation,
+            CurrentState = CurrentState.Idle,
+            AppliedAt = DateTime.Now,
+            Result = -1,
+        };
+
+
+        try
+        {
+            var connector = new Connector();
+            connector.Connect(43191);
+            var json = JsonSerializer.Serialize(newTask);
+            connector.SendMessage(json);
+            connector.Dispose();
+
+            _dbcontext.Tasks.Add(newTask);
+            _dbcontext.SaveChanges();
+
+            message = "Success";
+            return newTask.TaskID;
+        }
+        catch (Exception)
+        {
+            message = "Internal Error in AI Detection: -1";
+            return -1;
+        }
     }
 
     public TaskState CheckTask(int id, User user, out string message)
     {
-        throw new NotImplementedException();
+        message = "Success";
+        var task = _dbcontext.Tasks.SingleOrDefault(t => t.TaskID == id);
+        if (task == null)
+        {
+            message = "No Tasks with such id";
+            return new TaskState
+            {
+                CurrentState = CurrentState.Unknown
+            };
+        }
+
+        var state = new TaskState
+        {
+            CurrentState = task.CurrentState
+        };
+        if (task.CurrentState == CurrentState.Done)
+        {
+            state.Age = task.Result;
+        }
+
+        return state;
     }
 }

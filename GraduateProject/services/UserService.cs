@@ -1,4 +1,5 @@
-﻿using GraduateProject.contexts;
+﻿using System.Linq;
+using GraduateProject.contexts;
 using GraduateProject.httpModels;
 using GraduateProject.httpModels.response;
 using GraduateProject.models;
@@ -16,14 +17,14 @@ public interface IUserService
     AuthenticateResponse? Authenticate(AuthenticateRequest model, out string message);
 
     IEnumerable<User> GetAll();
-    User GetById(int id);
+    User? GetById(int id);
 
     /// <summary>
     /// Register The User in Database and make a normal login after
     /// </summary>
     /// <param name="model">The User data model</param>
     /// <returns>Return The User Data</returns>
-    AuthenticateResponse? Register(AuthenticateRequest model, out string s);
+    AuthenticateResponse? Register(AuthenticateRequest model, out string message);
 
     void Update(int id, UpdateRequest model);
     void Delete(int id);
@@ -47,18 +48,21 @@ public interface IUserService
         public AuthenticateResponse? Authenticate(AuthenticateRequest model, out string message)
         {
             var user = _context.Users.SingleOrDefault(x => x.UserName == model.Username);
-
-            if (user != null && CryptUtils.StringToSHA256(user.Password) == model.Password)
+            Console.WriteLine(user?.Password);
+            if (user != null && CryptUtils.StringToSHA256(model.Password) == user.Password)
             {
                 message = "Success";
-                return new AuthenticateResponse
+
+                var response = new AuthenticateResponse
 
                 {
                     FirstName = user.FirstName,
                     LastName = user.LastName,
                     Username = user.UserName,
-                    Token = JwtUtils.GenerateToken(user)
+                    Token = CommonUtils.CreateTokenSession(user)
                 };
+                UpdateAndAddToken(user, response.Token);
+                return response;
             }
 
             message = "Incorrect UserName or Password";
@@ -68,7 +72,7 @@ public interface IUserService
 
         public AuthenticateResponse? Register(AuthenticateRequest model, out string? message)
         {
-            if (CommonUtils.CheckStrings(model.FirstName, model.Password, model.EmailAddress))
+            if (!CommonUtils.CheckStrings(model.FirstName, model.Password, model.EmailAddress))
             {
                 message = "Missing Variables";
                 return null;
@@ -86,7 +90,8 @@ public interface IUserService
                 UserName = model.Username,
                 Password = CryptUtils.StringToSHA256(model.Password),
                 FirstName = model.FirstName,
-                LastName = model.LastName
+                LastName = model.LastName,
+                EmailAddress = model.EmailAddress
             };
             _context.Users.Add(newUser);
 
@@ -118,12 +123,12 @@ public interface IUserService
 
         public IEnumerable<User> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Set<User>();
         }
 
-        public User GetById(int id)
+        public User? GetById(int id)
         {
-            throw new NotImplementedException();
+            return _context.Users.SingleOrDefault(u => u.userID == id);
         }
 
 
@@ -134,12 +139,56 @@ public interface IUserService
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            _context.Users.Remove(new User() {userID = id});
         }
 
-        public User CheckAuthentication(string? token)
+        public User? CheckAuthentication(string? token)
         {
-            throw new NotImplementedException();
+            if (token == null)
+            {
+                return null;
+            }
+
+            Console.WriteLine("Token: " + token);
+            foreach (var contextToken in _context.Tokens)
+            {
+                Console.WriteLine("Token: " + contextToken.Token1);
+                Console.WriteLine(contextToken.Token1 == token);
+            }
+
+            var tokenUser = _context.Tokens.SingleOrDefault(t => t.Token1 == token);
+            if (tokenUser == null)
+            {
+                return null;
+            }
+
+            if (tokenUser.CreatedDate.AddHours(7) >= DateTime.Now)
+            {
+                return _context.Users.SingleOrDefault(u => u.userID == tokenUser.UserId);
+            }
+
+            _context.Tokens.Remove(tokenUser);
+            _context.SaveChanges();
+            return null;
+        }
+
+        private void UpdateAndAddToken(User user, string t)
+        {
+            var tokens = _context.Tokens.Where(token => token.UserId == user.userID);
+            foreach (var token in tokens)
+            {
+                if (token.CreatedDate >= DateTime.Now) continue;
+                _context.Tokens.Remove(token);
+            }
+
+            var newToken = new Token()
+            {
+                UserId = user.userID,
+                CreatedDate = DateTime.Now,
+                Token1 = t
+            };
+            _context.Tokens.Add(newToken);
+            _context.SaveChanges();
         }
     }
 }

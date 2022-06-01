@@ -22,7 +22,7 @@ public class User
     public string? Password { get; set; } = string.Empty;
 
 
-    public IEnumerable<Token> Tokens { get; set; }
+    public IEnumerable<Token>? Tokens { get; set; }
 
     public IEnumerable<Task> Tasks { get; set; }
 }

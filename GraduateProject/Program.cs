@@ -29,6 +29,7 @@ System.IO.Directory.CreateDirectory("images");
     {
         services.AddScoped<IUserService, IUserService.UserService>();
         services.AddScoped<ITaskService, TaskService>();
+        
     }
 }
 

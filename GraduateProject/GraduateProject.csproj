@@ -19,5 +19,9 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="2.0.0-preview1-final" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     </ItemGroup>
-
+    <ItemGroup>
+        <Reference Include="SimpleConnector">
+            <HintPath>SimpleConnector.dll</HintPath>
+        </Reference>
+    </ItemGroup>
 </Project>

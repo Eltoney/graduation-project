@@ -77,7 +77,6 @@ D:\works\c#\GraduateProject\GraduateProject\bin\Debug\net6.0\GraduateProject.exe
 D:\works\c#\GraduateProject\GraduateProject\bin\Debug\net6.0\GraduateProject.deps.json
 D:\works\c#\GraduateProject\GraduateProject\bin\Debug\net6.0\GraduateProject.runtimeconfig.json
 D:\works\c#\GraduateProject\GraduateProject\bin\Debug\net6.0\GraduateProject.dll
-D:\works\c#\GraduateProject\GraduateProject\bin\Debug\net6.0\ref\GraduateProject.dll
 D:\works\c#\GraduateProject\GraduateProject\bin\Debug\net6.0\GraduateProject.pdb
 D:\works\c#\GraduateProject\GraduateProject\bin\Debug\net6.0\Humanizer.dll
 D:\works\c#\GraduateProject\GraduateProject\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
@@ -124,3 +123,4 @@ D:\works\c#\GraduateProject\GraduateProject\obj\Debug\net6.0\staticwebassets.dev
 D:\works\c#\GraduateProject\GraduateProject\obj\Debug\net6.0\scopedcss\bundle\GraduateProject.styles.css
 D:\works\c#\GraduateProject\GraduateProject\obj\Debug\net6.0\GraduateProject.csproj.CopyComplete
 D:\works\c#\GraduateProject\GraduateProject\obj\Debug\net6.0\GraduateProject.genruntimeconfig.cache
+D:\works\c#\GraduateProject\GraduateProject\obj\Debug\net6.0\refint\GraduateProject.dll

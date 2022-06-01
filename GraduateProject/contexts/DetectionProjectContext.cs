@@ -31,27 +31,7 @@ namespace GraduateProject.contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Token>(entity =>
-            {
-                entity.ToTable("tokens");
-
-                entity.Property(e => e.TokenId).HasColumnName("tokenID");
-
-                entity.Property(e => e.Token1)
-                    .HasMaxLength(100)
-                    .HasColumnName("token")
-                    .IsFixedLength();
-
-                entity.Property(e => e.UserId).HasColumnName("userID");
-
-                entity.Property(t => t.CreatedDate).HasColumnName("createdDate");
-
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.Tokens)
-                    .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK_tokens_Users");
-            });
-
+          
             modelBuilder.Entity<User>(entity =>
             {
                 entity.Property(e => e.userID).HasColumnName("userID");
@@ -72,6 +52,26 @@ namespace GraduateProject.contexts
                     .IsFixedLength();
                 entity.Property(e => e.FirstName).HasMaxLength(30).HasColumnName("firstName").IsFixedLength();
                 entity.Property(e => e.LastName).HasMaxLength(30).HasColumnName("lastName").IsFixedLength();
+            });
+            modelBuilder.Entity<Token>(entity =>
+            {
+                entity.ToTable("tokens");
+
+                entity.Property(e => e.TokenId).HasColumnName("tokenID");
+
+                entity.Property(e => e.Token1)
+                    .HasMaxLength(100)
+                    .HasColumnName("token")
+                    .IsFixedLength();
+
+                entity.Property(e => e.UserId).HasColumnName("userID");
+
+                entity.Property(t => t.CreatedDate).HasColumnName("createdDate");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Tokens)
+                    .HasForeignKey(d => d.UserId)
+                    .HasConstraintName("FK_tokens_Users");
             });
 
             modelBuilder.Entity<Task>(entity =>
