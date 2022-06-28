@@ -29,9 +29,17 @@ public interface ITaskService
     /// <param name="message">the output message</param>
     /// <returns>Return Task State object contains all data about task like state and result if found</returns>
     TaskState CheckTask(int id, User user, out string message);
+
+    /// <summary>
+    /// Get List of tasks performed by user
+    /// </summary>
+    /// <param name="user">Entity contained data about user who performed tasks</param>
+    /// <param name="message">A success message</param>
+    /// <returns></returns>
+    IEnumerable<Task> GetTaskList(User user, out string message);
 }
 
-class TaskService : ITaskService
+internal class TaskService : ITaskService
 {
     private readonly DetectionProjectContext _dbcontext;
 
@@ -96,5 +104,13 @@ class TaskService : ITaskService
         }
 
         return state;
+    }
+
+    public IEnumerable<Task> GetTaskList(User user, out string message)
+    {
+        message = "Success";
+        var tasks = _dbcontext.Tasks.Where(t => t.UserID == user.userID);
+
+        return tasks;
     }
 }

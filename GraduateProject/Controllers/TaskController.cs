@@ -1,6 +1,7 @@
 ﻿using GraduateProject.httpModels;
 using GraduateProject.httpModels.requests;
 using GraduateProject.httpModels.response;
+using GraduateProject.models;
 using GraduateProject.services;
 using GraduateProject.utils;
 using Microsoft.AspNetCore.Mvc;
@@ -72,10 +73,10 @@ public class TaskController : Controller
         };
     }
 
-    [HttpGet("CheckState/{id}")]
-    public Response CheckState(int id)
+    [HttpPost("CheckState/{id}")]
+    public Response CheckState(int id, Request request)
     {
-        var sessionToken = Request.Cookies["sessionToken"];
+        var sessionToken = request.SessionToken;
         var user = _userService.CheckAuthentication(sessionToken);
 
         if (user == null)
@@ -87,7 +88,37 @@ public class TaskController : Controller
             };
         }
 
-        return new Response();
+        var taskState = _taskService.CheckTask(id, user, out string message);
+
+        return new Response()
+        {
+            IsSuccess = taskState.CurrentState != CurrentState.Unknown,
+            Result = taskState,
+            Message = message
+        };
+    }
+
+    public Response GetTasks(Request request)
+    {
+        var sessionToken = request.SessionToken;
+        var user = _userService.CheckAuthentication(sessionToken);
+
+        if (user == null)
+        {
+            return new Response()
+            {
+                IsSuccess = false,
+                Message = "Not Authorized"
+            };
+        }
+
+        var tasks = _taskService.GetTaskList(user, out var message);
+        return new Response()
+        {
+            IsSuccess = true,
+            Message = message,
+            Result = tasks
+        };
     }
 
     [HttpPost]

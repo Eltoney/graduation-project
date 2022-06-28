@@ -149,10 +149,9 @@ public interface IUserService
                 return null;
             }
 
-            Console.WriteLine("Token: " + token);
+          
             foreach (var contextToken in _context.Tokens)
             {
-                Console.WriteLine("Token: " + contextToken.Token1);
                 Console.WriteLine(contextToken.Token1 == token);
             }
 
