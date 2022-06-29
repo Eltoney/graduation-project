@@ -1,0 +1,52 @@
+﻿@model GraduateProject.httpModels.webAppModels.SignInModel
+@{
+    Layout = "Shared/_LoginPartial";
+}
+<style>
+
+    
+</style>
+<div class="col-lg-6">
+
+    <div class="card2 card border-0 px-4 py-5">
+        <h3 class="mb-1">Login Now</h3>
+        <p class="mb-4 text-sm">Didn't have account? <a class="text-primary login" href="/account/register">Sign Up</a></p>
+    
+  <br/>
+  @{
+            if (ViewBag.Message != null)
+            {
+                <div class="alert alert-danger"> @ViewBag.Message</div>
+            }
+        }
+
+
+        @Html.ValidationSummary(true)
+     
+        @Html.AntiForgeryToken()
+        @using (Html.BeginForm())
+        {
+            <div class="row px-3">
+                <label class="mb-0">
+                    <span class="mb-0 text-sm">UserName</span>
+                </label>
+                @Html.TextBoxFor(a => a.UserName)
+            </div>
+            <div class="row px-3">
+                <label class="mb-0">
+                    <span class="mb-0 text-sm">Password</span>
+                </label>
+                @Html.PasswordFor(a => a.Password)
+            </div>
+
+
+            <div class="row mb-4">
+                <div class="col-md-5">
+                    <input type="submit" class="btn btn-blue text-center mb-1" name="submit" text="Login"/>
+
+                </div>
+
+            </div>
+        }
+    </div>
+</div>

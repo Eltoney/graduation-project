@@ -124,3 +124,8 @@ D:\works\c#\GraduateProject\GraduateProject\obj\Debug\net6.0\scopedcss\bundle\Gr
 D:\works\c#\GraduateProject\GraduateProject\obj\Debug\net6.0\GraduateProject.csproj.CopyComplete
 D:\works\c#\GraduateProject\GraduateProject\obj\Debug\net6.0\GraduateProject.genruntimeconfig.cache
 D:\works\c#\GraduateProject\GraduateProject\obj\Debug\net6.0\refint\GraduateProject.dll
+D:\works\c#\GraduateProject\GraduateProject\bin\Debug\net6.0\GraduateProject.staticwebassets.runtime.json
+D:\works\c#\GraduateProject\GraduateProject\obj\Debug\net6.0\GraduateProject.RazorAssemblyInfo.cache
+D:\works\c#\GraduateProject\GraduateProject\obj\Debug\net6.0\GraduateProject.RazorAssemblyInfo.cs
+D:\works\c#\GraduateProject\GraduateProject\obj\Debug\net6.0\scopedcss\webApp\Pages\Shared\_Layout.cshtml.rz.scp.css
+D:\works\c#\GraduateProject\GraduateProject\obj\Debug\net6.0\scopedcss\projectbundle\GraduateProject.bundle.scp.css

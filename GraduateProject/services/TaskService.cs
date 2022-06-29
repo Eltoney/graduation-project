@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using GraduateProject.contexts;
 using GraduateProject.httpModels;
-using GraduateProject.httpModels.response;
+using GraduateProject.httpModels.api.response;
 using GraduateProject.models;
 using Task = GraduateProject.models.Task;
 using SimpleConnector;

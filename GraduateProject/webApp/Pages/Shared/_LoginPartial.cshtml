@@ -1,0 +1,196 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="~/lib/jquery/dist/jquery.min.js">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    body {
+    color: #000;
+    overflow-x: hidden;
+    height: 100%;
+    background: linear-gradient(45deg, #07073B 50%, #07073B 50%) no-repeat;
+}
+
+.card0 {
+    box-shadow: 0px 4px 8px 0px #757575;
+    border-radius: 10px;
+}
+
+.card1 {
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.logo {
+
+    width: 100px;
+    height: 50px;
+    margin-top: 20px;
+    margin-left: 300px;
+}
+
+.image {
+    width: 300px;
+    height: 300px;
+}
+
+.card2 {
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.login {
+    cursor: pointer;
+}
+
+.fa-google {
+    background-color: #fff;
+    color: #df4b37;
+    padding: 10px 12px;
+    font-size: 20px;
+}
+
+.fa-facebook {
+    background-color: #fff;
+    color: #3b5998;
+    padding: 10px 15px;
+    font-size: 20px;
+}
+
+.google {
+    background-color: #df4b37;
+    color: #fff;
+    padding: 3px 0px 3px 3px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.fb {
+    background-color: #3b5998;
+    color: #fff;
+    padding: 3px 0px 3px 3px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.line {
+    height: 1px;
+    width: 45%;
+    background-color: #E0E0E0;
+    margin-top: 10px;
+}
+
+.or {
+    width: 10%;
+}
+
+.text-sm {
+    font-size: 14px !important;
+}
+
+input, textarea {
+    padding: 10px 12px 10px 12px;
+    border: 1px solid lightgrey;
+    border-radius: 4px;
+    margin-bottom: 25px;
+    margin-top: 2px;
+    width: 100%;
+    box-sizing: border-box;
+    color: #2C3E50;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background-color: #ECEFF1;
+}
+
+input:focus, textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid #07073B;
+    outline-width: 0;
+}
+
+button:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    outline-width: 0;
+}
+
+.btn-blue {
+    background-color: #07073B;
+    width: 100%;
+    color: #fff;
+    border-radius: 6px;
+}
+
+.btn-blue:hover {
+    background-color: #0e0e65;
+    color: white;
+    cursor: pointer; 
+}
+
+@@media screen and (max-width: 991px) {
+    .card1 {
+        border-bottom-left-radius: 0px;
+        border-top-right-radius: 10px;
+    }
+
+    .card2 {
+        border-bottom-left-radius: 10px;
+        border-top-right-radius: 0px;
+    }
+    .bg-blue {
+    color: #fff;
+    background-color: #07073B;
+}
+}
+</style>
+</head>
+<body>
+    <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
+        <div class="card card0 border-0">
+            <div class="row d-flex">
+                <div class="col-lg-4">
+                    <div class="card1 bg-light pb-5">
+                        <div class="row px-3">
+                            <img src="~/imgs/AGE-RAYS.png" class="logo">
+                        </div>
+                        <div class="row px-3 justify-content-center mt-4 mb-5">
+                            <img src="~/imgs/360_F_320219753_tjy5spjY21HarVMNraHDJL1cqY07FDRy-removebg-preview.png" class="image">
+                        </div>
+                        <div class="row px-3 text-center justify-content-center">
+                            <h4>It has become easy to detect age</h4>
+                            <small class="text-muted px-5 mx-1 mx-lg-5"> with your X-Ray you can determine your age easily and rapidly, join us now</small>
+                        </div>
+                    </div>
+                </div>
+                
+               @RenderBody()
+            </div>
+        </div>
+    </div>
+<div class="bg-blue py-4" style="background-color: #07073B; color:white">
+    <div class="row px-3">
+        <small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2022 x-ray team.</small>
+        <div class="social-contact ml-4 ml-sm-auto">
+            <span class="fa fa-facebook mr-4 text-sm" style="background-color: #07073B; color: white;"></span>
+            <span class="fa fa-google-plus mr-4 text-sm"></span>
+            <span class="fa fa-linkedin mr-4 text-sm"></span>
+            <span class="fa fa-twitter mr-4 mr-sm-5 text-sm"></span>
+        </div>
+    </div>
+</div>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

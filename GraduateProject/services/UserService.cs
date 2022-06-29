@@ -1,7 +1,8 @@
 ﻿using System.Linq;
 using GraduateProject.contexts;
 using GraduateProject.httpModels;
-using GraduateProject.httpModels.response;
+using GraduateProject.httpModels.api.requests;
+using GraduateProject.httpModels.api.response;
 using GraduateProject.models;
 using GraduateProject.utils;
 
@@ -36,6 +37,12 @@ public interface IUserService
     /// <returns>The Authorized User or null if not authorized</returns>
     User? CheckAuthentication(string? token);
 
+    /// <summary>
+    /// To Signout the user and remove token from database
+    /// </summary>
+    /// <param name="session">User SignedIn Token</param>
+    void SignOut(string? session);
+
     class UserService : IUserService
     {
         private DetectionProjectContext _context;
@@ -48,7 +55,7 @@ public interface IUserService
         public AuthenticateResponse? Authenticate(AuthenticateRequest model, out string message)
         {
             var user = _context.Users.SingleOrDefault(x => x.UserName == model.Username);
-            Console.WriteLine(user?.Password);
+
             if (user != null && CryptUtils.StringToSHA256(model.Password) == user.Password)
             {
                 message = "Success";
@@ -149,7 +156,7 @@ public interface IUserService
                 return null;
             }
 
-          
+
             foreach (var contextToken in _context.Tokens)
             {
                 Console.WriteLine(contextToken.Token1 == token);
@@ -169,6 +176,14 @@ public interface IUserService
             _context.Tokens.Remove(tokenUser);
             _context.SaveChanges();
             return null;
+        }
+
+        public void SignOut(string? token)
+        {
+            var t = _context.Tokens.SingleOrDefault(tt => tt.Token1 == token);
+            if (t == null) return;
+            _context.Tokens.Remove(t);
+            _context.SaveChanges();
         }
 
         private void UpdateAndAddToken(User user, string t)

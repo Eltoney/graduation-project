@@ -1,6 +1,7 @@
 ﻿using GraduateProject.contexts;
 using GraduateProject.httpModels;
-using GraduateProject.httpModels.response;
+using GraduateProject.httpModels.api.requests;
+using GraduateProject.httpModels.api.response;
 using GraduateProject.models;
 using GraduateProject.services;
 using GraduateProject.utils;
@@ -11,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace GraduateProject.Controllers;
 
 [ApiController()]
-[Route("auth")]
+[Route("api/auth")]
 public class AuthController : Controller
 {
     private readonly IUserService _userService;

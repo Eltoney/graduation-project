@@ -1,0 +1,100 @@
+﻿@page
+@namespace GraduateProject.webApp.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    var barPath = ViewBag.IsSigned ? "includes/SignedIndexBar" : "includes/DefaultIndexBar";
+}
+<html>
+<head>
+    <title>Title</title>
+    <style>
+      
+    .subtitle {
+    margin: 0 0 2em 0;
+    }
+    .fancy {
+    line-height: 0.5;
+    text-align: center;
+    }
+    .fancy span {
+    display: inline-block;
+    position: relative;  
+    }
+    .fancy span:before,
+    .fancy span:after {
+    content: "";
+    position: absolute;
+    height: 7px;
+    
+    border-top: 5px solid #A8B1FF;
+    top: 0;
+    width: 150px;
+    }
+    .fancy span:before {
+    right: 100%;
+    margin-right: 15px;
+    }
+    .fancy span:after {
+    left: 100%;
+    margin-left: 15px;
+    }
+      </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <script src="~/lib/jquery/dist/jquery-3.6.0.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+</head>
+<body style="background-color: #07073B;">
+<!-- startheader -->
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #07073B !important;">
+    <div class="container-fluid" style="background-color:#07073B  !important;">
+        &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+        @{
+            await Html.RenderPartialAsync("includes/NavBar");
+            await Html.RenderPartialAsync(barPath);
+        }
+
+    </div>
+</nav>
+<!-- endheader -->
+<div class="hero" Style="margin-left:50px !important;">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-5">
+
+                <p style="margin-top: 10px;">
+                <h1 style="color: white; font-family: Tajawal;">
+                    It Has Become Easy
+                    To Determine Age
+                </h1>
+                <p style="color:  rgba(255, 255, 255, 0.758) !important;">
+                    <br> The quick, brown fox jumps over a lazy dog. DJs <br> flock by when MTV ax quiz prog. Junk MTV quiz <br> graced by fox whelps. Bawds jog, flick quartz, vex <br>
+                </p> <br> <a class="btn" asp-controller="WebTask" asp-action="Create" style="color:#07073B; background-color: white !important; font-weight: bold; border-radius: 10px;">Start</a>
+                <br><br><br><br><br><br><br><br><br><br>
+            </div>
+            <div class="col-md-7">
+                <img src="~/imgs/360_F_320219753_tjy5spjY21HarVMNraHDJL1cqY07FDRy-removebg-preview.png" style="height: 570px;">
+            </div>
+        </div>
+    </div>
+</div><br><br><br>
+<!-- section2 -->
+<footer class="bg-light text-center text-lg-start" style="background-color: white !important;">
+    <!-- Copyright -->
+    <div class="text-center p-3">
+        ©2022 Copyright:
+        <a class="text-dark" href="https://mdbootstrap.com/">
+            <span style="color: #07073B !important; font-size:medium; font-family: Segoe UI;">AGE-RAYS</span>
+        </a>
+    </div>
+    <!-- Copyright -->
+</footer>
+
+
+</body>
+
+</html>

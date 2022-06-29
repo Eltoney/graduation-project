@@ -1,0 +1,16 @@
+﻿<div class="dropdown">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style=" border: #07073B;background-color: #07073B;">
+        @Html.Raw(ViewBag.Name)
+    </button>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="History.html">history</a>
+
+    </div>
+</div>
+&nbsp; &nbsp;&nbsp;
+<div class="d-flex" style="margin-right: 30px; ">
+    <button class="btn btn-outline-success sup" type="submit" style="background-color:white;;border-color: white  !important;">
+        <a asp-controller="Account" asp-action="SignOut" style="text-decoration: none; color: #07073B;">Log out</a>
+    </button>
+    &nbsp; &nbsp; &nbsp;
+</div>
