@@ -64,7 +64,6 @@ internal class TaskService : ITaskService
         {
             _dbcontext.Tasks.Add(newTask);
             _dbcontext.SaveChanges();
-            
             var connector = new Connector();
             connector.Connect(41355);
             var json = JsonSerializer.Serialize(newTask);
