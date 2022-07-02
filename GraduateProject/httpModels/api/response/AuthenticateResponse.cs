@@ -8,5 +8,5 @@ public class AuthenticateResponse
     public string LastName { get; set; }
     public string Username { get; set; }
 
-    [JsonPropertyName("Session_Token")] public string Token { get; set; }
+    [JsonPropertyName("SessionToken")] public string Token { get; set; }
 }

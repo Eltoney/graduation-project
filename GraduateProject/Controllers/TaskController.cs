@@ -63,7 +63,7 @@ public class TaskController : Controller
 
         await file.CopyToAsync(new FileStream(imageLocation, FileMode.Create, FileAccess.ReadWrite));
 
-        int taskId = _taskService.CreateTask(imageLocation, user, out string message);
+        int taskId = _taskService.CreateTask(imageLocation, user, out var message);
 
         return new Response()
         {
@@ -97,7 +97,7 @@ public class TaskController : Controller
             Message = message
         };
     }
-
+    [HttpPost("getTasks")]
     public Response GetTasks(Request request)
     {
         var sessionToken = request.SessionToken;

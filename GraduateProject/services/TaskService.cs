@@ -62,20 +62,23 @@ internal class TaskService : ITaskService
 
         try
         {
+            _dbcontext.Tasks.Add(newTask);
+            _dbcontext.SaveChanges();
+            
             var connector = new Connector();
-            connector.Connect(43191);
+            connector.Connect(41355);
             var json = JsonSerializer.Serialize(newTask);
             connector.SendMessage(json);
             connector.Dispose();
 
-            _dbcontext.Tasks.Add(newTask);
-            _dbcontext.SaveChanges();
+           
 
             message = "Success";
             return newTask.TaskID;
         }
-        catch (Exception)
+        catch (Exception e)
         {
+            Console.WriteLine(e.StackTrace);            
             message = "Internal Error in AI Detection: -1";
             return -1;
         }

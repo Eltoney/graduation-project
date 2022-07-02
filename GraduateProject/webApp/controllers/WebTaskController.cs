@@ -21,7 +21,7 @@ public class WebTaskController : Controller
         _taskService = taskService;
         _userService = userService;
     }
-
+[HttpGet]
     public IActionResult Index()
     {
         return CheckSession() == null ? RedirectToAction("SignIn", "Account") : RedirectToAction("Create");
@@ -55,7 +55,7 @@ public class WebTaskController : Controller
         var name = file.FileName;
         var ext = name[..name.LastIndexOf(".", StringComparison.Ordinal)];
 
-        if (!CommonUtils.CheckImageExt(ext))
+        if (CommonUtils.CheckImageExt(ext))
         {
             ViewBag.Message = "Sorry.. we accept only images";
             return View("CreateTask");
@@ -63,16 +63,16 @@ public class WebTaskController : Controller
 
         var guid = Convert.ToString(Guid.NewGuid());
         var imageLocation = Path.Combine("images", $"{guid}.{ext}");
-
+        
         await file.CopyToAsync(new FileStream(imageLocation, FileMode.Create, FileAccess.ReadWrite));
-
-        var taskId = _taskService.CreateTask(imageLocation, user, out string message);
+      
+        var taskId = _taskService.CreateTask(Path.GetFullPath(imageLocation), user, out string message);
         if (taskId != -1) return RedirectToAction("", "WebTask");
         ViewBag.Message = message;
         return View("CreateTask");
     }
 
-    [HttpGet]
+    [HttpGet("getTasks")]
     public IActionResult CheckTaskState()
     {
         //TODO: Needs  a UI and will operate with javascript and Check Task API

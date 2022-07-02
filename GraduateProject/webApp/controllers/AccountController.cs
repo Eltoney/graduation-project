@@ -16,7 +16,7 @@ public class AccountController : Controller
         this._userService = userService;
     }
 
-    // GET
+    [HttpGet("")]
     public IActionResult Index()
     {
         return RedirectToAction("Index", "Home");
@@ -98,7 +98,7 @@ public class AccountController : Controller
         return RedirectToAction("Index", "Home");
     }
 
-    [HttpGet]
+    [HttpGet("logout")]
     public IActionResult SignOut()
     {
         if (CheckIfAlreadySignedIn())

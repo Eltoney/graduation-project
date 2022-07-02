@@ -7,5 +7,5 @@ public class UploadImageModel
 {
     [Required] [DataType(DataType.Upload)] public IFormFile Image { get; set; }
 
-    public String SessionToken { get; set; }
+    public string SessionToken { get; set; }
 }
