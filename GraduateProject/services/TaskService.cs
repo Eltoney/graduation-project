@@ -36,7 +36,7 @@ public interface ITaskService
     /// <param name="user">Entity contained data about user who performed tasks</param>
     /// <param name="message">A success message</param>
     /// <returns></returns>
-    IEnumerable<Task> GetTaskList(User user, out string message);
+    IEnumerable<TaskData> GetTaskList(User user, out string message);
 }
 
 internal class TaskService : ITaskService
@@ -108,11 +108,23 @@ internal class TaskService : ITaskService
         return state;
     }
 
-    public IEnumerable<Task> GetTaskList(User user, out string message)
+    public IEnumerable<TaskData> GetTaskList(User user, out string message)
     {
         message = "Success";
         var tasks = _dbcontext.Tasks.Where(t => t.UserID == user.userID);
+        List<TaskData> data = new List<TaskData>();
+        foreach (var task in tasks)
+        {   
+            data.Add(new TaskData()
+            {
+                    
+                result = task.Result,
+                CurrentState = task.CurrentState,
+                TaskDate = task.AppliedAt,
+                TaskID = task.TaskID
+            });
 
-        return tasks;
+        }
+        return data;
     }
 }

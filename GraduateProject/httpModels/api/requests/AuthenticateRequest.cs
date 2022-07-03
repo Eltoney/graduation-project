@@ -5,7 +5,7 @@ namespace GraduateProject.httpModels.api.requests;
 
 public class AuthenticateRequest
 {
-    [Required] public string Username { get; set; }
+    [Required] public string UserName { get; set; }
 
     [Required] public string? Password { get; set; }
 
@@ -18,6 +18,6 @@ public class AuthenticateRequest
 
     public string ToString()
     {
-        return $"FirstName: {FirstName}, LastEnd: {LastName}, UserName: {Username}, EmailAddress: {EmailAddress}";
+        return $"FirstName: {FirstName}, LastEnd: {LastName}, UserName: {UserName}, EmailAddress: {EmailAddress}";
     }
 }

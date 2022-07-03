@@ -21,7 +21,8 @@ public class WebTaskController : Controller
         _taskService = taskService;
         _userService = userService;
     }
-[HttpGet]
+
+    [HttpGet]
     public IActionResult Index()
     {
         return CheckSession() == null ? RedirectToAction("SignIn", "Account") : RedirectToAction("Create");
@@ -63,12 +64,17 @@ public class WebTaskController : Controller
 
         var guid = Convert.ToString(Guid.NewGuid());
         var imageLocation = Path.Combine("images", $"{guid}.{ext}");
-        
+
         await file.CopyToAsync(new FileStream(imageLocation, FileMode.Create, FileAccess.ReadWrite));
-      
+
         var taskId = _taskService.CreateTask(Path.GetFullPath(imageLocation), user, out string message);
-        if (taskId != -1) return RedirectToAction("", "WebTask");
-        ViewBag.Message = message;
+        if (taskId != -1)
+        {
+            ViewBag.SuccessMessage = "Task Added Successfully: Please Use Phone app to see results";
+        }
+        else
+            ViewBag.Message = message;
+
         return View("CreateTask");
     }
 

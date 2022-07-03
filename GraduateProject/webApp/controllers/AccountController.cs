@@ -54,7 +54,7 @@ public class AccountController : Controller
         }
 
         var r = _userService.Authenticate(
-            new AuthenticateRequest() {Username = model.UserName, Password = model.Password}, out var m);
+            new AuthenticateRequest() {UserName = model.UserName, Password = model.Password}, out var m);
         if (r == null)
         {
             ViewBag.Message = m;

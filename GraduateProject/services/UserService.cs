@@ -54,7 +54,7 @@ public interface IUserService
 
         public AuthenticateResponse? Authenticate(AuthenticateRequest model, out string message)
         {
-            var user = _context.Users.SingleOrDefault(x => x.UserName == model.Username);
+            var user = _context.Users.SingleOrDefault(x => x.UserName == model.UserName);
 
             if (user != null && CryptUtils.StringToSHA256(model.Password) == user.Password)
             {
@@ -85,7 +85,7 @@ public interface IUserService
                 return null;
             }
 
-            var tmpUser = _context.Users.SingleOrDefault(u => model.Username == u.UserName);
+            var tmpUser = _context.Users.SingleOrDefault(u => model.UserName == u.UserName);
             if (tmpUser != null)
             {
                 message = "UserName Is Already Taken";
@@ -94,7 +94,7 @@ public interface IUserService
 
             var newUser = new User()
             {
-                UserName = model.Username,
+                UserName = model.UserName,
                 Password = CryptUtils.StringToSHA256(model.Password),
                 FirstName = model.FirstName,
                 LastName = model.LastName,
