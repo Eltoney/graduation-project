@@ -69,7 +69,7 @@ public class TaskController : Controller
         {
             IsSuccess = taskId != -1,
             Message = message,
-            Result = new CreateTaskResponse() {TaskID = taskId}
+            Result = taskId
         };
     }
 
