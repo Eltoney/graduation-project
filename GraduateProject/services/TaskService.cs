@@ -64,19 +64,19 @@ internal class TaskService : ITaskService
         {
             _dbcontext.Tasks.Add(newTask);
             _dbcontext.SaveChanges();
-              newTask.ImageLocation=Path.GetFullPath(newTask.ImageLocation);
+            newTask.ImageLocation = Path.GetFullPath(newTask.ImageLocation);
             var connector = new Connector();
             connector.Connect(41355);
-            var dict = new Dictionary<String, dynamic>(){
-{"taskID",newTask.TaskID},
-{"imageLocation",newTask.ImageLocation}
+            var dict = new Dictionary<String, dynamic>()
+            {
+                {"taskID", newTask.TaskID},
+                {"imageLocation", newTask.ImageLocation}
             };
             var json = JsonSerializer.Serialize(dict);
-            
-            _dbcontext.Tasks.SingleOrDefault(t => t.TaskID ==   2029);
+
+            _dbcontext.Tasks.SingleOrDefault(t => t.TaskID == 2029);
             connector.SendMessage(json);
             connector.Dispose();
-
 
 
             message = "Success";
@@ -86,6 +86,9 @@ internal class TaskService : ITaskService
         {
             Console.WriteLine(e.StackTrace);
             message = "Internal Error in AI Detection: -1";
+            newTask.CurrentState = CurrentState.Failed;
+            _dbcontext.Tasks.Update(newTask);
+            _dbcontext.SaveChanges();
             return -1;
         }
     }
@@ -93,8 +96,8 @@ internal class TaskService : ITaskService
     public TaskState CheckTask(int id, User user, out string message)
     {
         message = "Success";
-    
-        var task =_dbcontext.Tasks.SingleOrDefault(t=>t.TaskID==id);
+
+        var task = _dbcontext.Tasks.SingleOrDefault(t => t.TaskID == id);
         if (task == null)
         {
             message = "No Tasks with such id";
@@ -125,14 +128,13 @@ internal class TaskService : ITaskService
         {
             data.Add(new TaskData()
             {
-
                 result = task.Result,
                 CurrentState = task.CurrentState,
                 TaskDate = task.AppliedAt,
                 TaskID = task.TaskID
             });
-
         }
+
         return data;
     }
 }

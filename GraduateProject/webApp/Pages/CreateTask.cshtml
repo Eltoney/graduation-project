@@ -114,7 +114,7 @@
                 }else{
                     result=result["result"];
                     if(result['currentState']==2){
-                        message.innerHTML="<span class=\"alert alert-success\" style=\"display: flex\">"+"Detection Done: "+result["age"]+" Months, In years: "+(result["age"]/12).toFixed(1) +"</span>";
+                        message.innerHTML="<span class=\"alert alert-success\" style=\"display: flex\">"+"Detection Done: "+result["age"].toFixed(1)+" Months, In years: "+(result["age"]/12).toFixed(1) +"</span>";
                     clearInterval(timer);
                     }else{
                         message.innerHTML="<span class=\"alert alert-info\" style=\"display: flex\">"+"Please Wait"+"</span>";
