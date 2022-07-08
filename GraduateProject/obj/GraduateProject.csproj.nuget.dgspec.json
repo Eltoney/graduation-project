@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Essam\\Desktop\\New folder\\graduate-project\\GraduateProject\\GraduateProject.csproj": {}
+    "D:\\works\\c#\\GraduateProject\\GraduateProject\\GraduateProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Essam\\Desktop\\New folder\\graduate-project\\GraduateProject\\GraduateProject.csproj": {
+    "D:\\works\\c#\\GraduateProject\\GraduateProject\\GraduateProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Essam\\Desktop\\New folder\\graduate-project\\GraduateProject\\GraduateProject.csproj",
+        "projectUniqueName": "D:\\works\\c#\\GraduateProject\\GraduateProject\\GraduateProject.csproj",
         "projectName": "GraduateProject",
-        "projectPath": "C:\\Users\\Essam\\Desktop\\New folder\\graduate-project\\GraduateProject\\GraduateProject.csproj",
-        "packagesPath": "C:\\Users\\Essam\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Essam\\Desktop\\New folder\\graduate-project\\GraduateProject\\obj\\",
+        "projectPath": "D:\\works\\c#\\GraduateProject\\GraduateProject\\GraduateProject.csproj",
+        "packagesPath": "C:\\Users\\Ali Elmorsy\\.nuget\\packages\\",
+        "outputPath": "D:\\works\\c#\\GraduateProject\\GraduateProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Essam\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Ali Elmorsy\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "D:\\Computer\\AppData\\Roaming\\Cosmos User Kit\\packages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -85,7 +86,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }
