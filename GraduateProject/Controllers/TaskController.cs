@@ -60,7 +60,7 @@ public class TaskController : Controller
 
         var guid = Convert.ToString(Guid.NewGuid());
         var imageLocation = Path.Combine("images", $"{guid}.{ext}");
-
+        Console.WriteLine("Image: "+imageLocation);
         await file.CopyToAsync(new FileStream(imageLocation, FileMode.Create, FileAccess.ReadWrite));
 
         int taskId = _taskService.CreateTask(imageLocation, user, out var message);

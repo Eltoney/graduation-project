@@ -1,6 +1,8 @@
 ﻿@using GraduateProject.httpModels.webAppModels
 @model CreateTaskModel
-
+@{
+    var title=ViewBag.taskID!=null?"Result" :"Upload X-Ray Image";
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,25 +25,27 @@
 
                 <div class="p-4 border-b-2">
 
-                    <span class="text-lg font-bold text-gray-600">Upload X-Ray Image</span>
+                    <span class="text-lg font-bold text-gray-600" >@title</span>
 
                 </div>
+     <div id="message">
 
-                <div class="p-3">
-                    <form asp-action="Create" asp-controller="WebTask" method="post" enctype="multipart/form-data">
-                        <div class="mb-2">
-                            <span>Attachments</span>
-                            
                             @{
                                 if (ViewBag.Message != null)
                                 {
                                     <span class="alert alert-danger" style="display: flex">@ViewBag.Message</span>
-                                }else if (ViewBag.SucessMessage != null)
+                                }else if (ViewBag.SuccessMessage != null)
                                 {
-                                    <span class="alert alert-success" style="display: flex">@ViewBag.SucessMessage</span>
-                                }
+                                    <span class="alert alert-success" style="display: flex">@ViewBag.SuccessMessage</span>
                                     
-                            }
+                                }else{
+                <form asp-action="Create" asp-controller="WebTask" method="post" enctype="multipart/form-data">
+                <div class="p-3">
+                    
+                        <div class="mb-2">
+                            <span>Attachments</span>
+                       
+                            </div>
                             <div class="relative h-40 rounded-lg border-dashed border-2 border-gray-200 bg-white flex justify-center items-center hover:cursor-pointer">
                                 <div class="absolute">
                                     <div class="flex flex-col items-center ">
@@ -68,13 +72,64 @@
 
                         </div>
 
-                    </form>
+                    </form>                    
+                                }
+                                    
+                            }
+                
                 </div>
 
 
             </div>
         </div>
+  
+      @{
+        if(ViewBag.SuccessMessage!=null){
+            <a asp-controller="WebTask" asp-action="Create" style="display: flex;">Detect Another X-ray</a>
+        }
+    }
     </div>
+
 </div>
+@{
+    if(ViewBag.SuccessMessage!=null){
+        <script>
+            let message=document.getElementById("message");
+        let sessionToken="@ViewBag.sessionToken";  
+           var timer= setInterval(()=>{
+            var id=@ViewBag.taskID;
+            let xhr = new XMLHttpRequest();
+         
+            xhr.open("post", "/api/task/CheckState/"+id);
+               xhr.setRequestHeader("Content-Type","application/json");
+            xhr.send(JSON.stringify({'sessionToken':sessionToken}));
+            xhr.onload=function(){
+                let result = JSON.parse(xhr.response);
+               console.log(result);
+                let success=result["isSuccess"];
+                
+                if(!success){
+                    message.innerHTML="<span class=\"alert alert-danger\">"+result["message"]+"</span>";
+                    clearInterval(timer);
+                }else{
+                    result=result["result"];
+                    if(result['currentState']==2){
+                        message.innerHTML="<span class=\"alert alert-success\" style=\"display: flex\">"+"Detection Done: "+result["age"]+" Months, In years: "+(result["age"]/12).toFixed(1) +"</span>";
+                    clearInterval(timer);
+                    }else{
+                        message.innerHTML="<span class=\"alert alert-info\" style=\"display: flex\">"+"Please Wait"+"</span>";
+                        console.log("Waiting");
+                    }
+                    
+                   
+                    
+                }
+
+            };
+            },5000)
+            
+        </script>
+    }
+}
 </body>
 </html>

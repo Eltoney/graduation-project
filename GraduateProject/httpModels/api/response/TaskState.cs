@@ -4,7 +4,7 @@ namespace GraduateProject.httpModels.api.response;
 
 public class TaskState
 {
-    public int Age { get; set; }
+    public double Age { get; set; }
 
     public CurrentState CurrentState { get; set; }
 }
