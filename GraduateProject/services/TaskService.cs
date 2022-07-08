@@ -64,20 +64,27 @@ internal class TaskService : ITaskService
         {
             _dbcontext.Tasks.Add(newTask);
             _dbcontext.SaveChanges();
+              newTask.ImageLocation=Path.GetFullPath(newTask.ImageLocation);
             var connector = new Connector();
             connector.Connect(41355);
-            var json = JsonSerializer.Serialize(newTask);
+            var dict = new Dictionary<String, dynamic>(){
+{"taskID",newTask.TaskID},
+{"imageLocation",newTask.ImageLocation}
+            };
+            var json = JsonSerializer.Serialize(dict);
+            
+            _dbcontext.Tasks.SingleOrDefault(t => t.TaskID ==   2029);
             connector.SendMessage(json);
             connector.Dispose();
 
-           
+
 
             message = "Success";
             return newTask.TaskID;
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.StackTrace);            
+            Console.WriteLine(e.StackTrace);
             message = "Internal Error in AI Detection: -1";
             return -1;
         }
@@ -86,7 +93,8 @@ internal class TaskService : ITaskService
     public TaskState CheckTask(int id, User user, out string message)
     {
         message = "Success";
-        var task = _dbcontext.Tasks.SingleOrDefault(t => t.TaskID == id);
+    
+        var task =_dbcontext.Tasks.SingleOrDefault(t=>t.TaskID==id);
         if (task == null)
         {
             message = "No Tasks with such id";
@@ -114,10 +122,10 @@ internal class TaskService : ITaskService
         var tasks = _dbcontext.Tasks.Where(t => t.UserID == user.userID);
         List<TaskData> data = new List<TaskData>();
         foreach (var task in tasks)
-        {   
+        {
             data.Add(new TaskData()
             {
-                    
+
                 result = task.Result,
                 CurrentState = task.CurrentState,
                 TaskDate = task.AppliedAt,

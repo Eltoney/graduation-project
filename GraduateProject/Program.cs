@@ -1,4 +1,4 @@
-using GraduateProject.contexts;
+    using GraduateProject.contexts;
 using GraduateProject.models;
 using GraduateProject.services;
 using GraduateProject.utils;
@@ -10,7 +10,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 {
     var services = builder.Services;
-
     services.Configure<RazorViewEngineOptions>(o =>
     {
         o.ViewLocationFormats.Add("/webApp/Pages/{0}" + RazorViewEngine.ViewExtension);

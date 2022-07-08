@@ -3,6 +3,7 @@ import selectors
 import socket
 import types
 import sys
+from predication import Predication
 
 from threadHandler import TaskHandler
 
@@ -12,14 +13,17 @@ class Server:
     def __init__(self,numberOfOperation) :
         self.numberOfOperation=numberOfOperation
         self.selector = selectors.DefaultSelector()
+        Predication()
         
 
     def connect(self):
+    
         self.serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.serverSocket.bind(('127.0.0.1', 41355))
         self.serverSocket.listen(100)
         self.serverSocket.setblocking(False)
         self.selector.register(self.serverSocket, selectors.EVENT_READ, data=(1))
+        print("Server Started")
         self.select()
 
     def handleClient(self,channel):

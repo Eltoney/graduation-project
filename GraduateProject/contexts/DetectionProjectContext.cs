@@ -78,17 +78,17 @@ namespace GraduateProject.contexts
             {
                 entity.ToTable("tasks");
 
-                entity.Property(t => t.TaskID).HasColumnName("taskID");
+                entity.Property(t => t.TaskID);
                 entity.Property(t => t.ImageLocation);
                 entity.Property(t => t.AppliedAt);
                 entity.Property(t => t.UserID);
                 entity.Property(t => t.CurrentState);
                 entity.Property(t => t.Result);
 
-                entity.HasOne(t => t.User)
-                    .WithMany(u => u.Tasks)
-                    .HasForeignKey(t => t.UserID)
-                    .HasConstraintName("FK_tasks_Users");
+                // entity.HasOne(t => t.User)
+                //     .WithMany(u => u.Tasks)
+                //     .HasForeignKey(t => t.UserID)
+                //     .HasConstraintName("FK_tasks_users");
             });
 
             OnModelCreatingPartial(modelBuilder);

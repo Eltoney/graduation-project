@@ -70,7 +70,9 @@ public class WebTaskController : Controller
         var taskId = _taskService.CreateTask(Path.GetFullPath(imageLocation), user, out string message);
         if (taskId != -1)
         {
-            ViewBag.SuccessMessage = "Task Added Successfully: Please Use Phone app to see results";
+            ViewBag.sessionToken=Request.Cookies["session"];
+            ViewBag.taskID=taskId;
+            ViewBag.SuccessMessage = "Task Added Successfully: Please wait till Detection is done";
         }
         else
             ViewBag.Message = message;

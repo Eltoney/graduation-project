@@ -8,77 +8,77 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = GraduateProject
 build_property.RootNamespace = GraduateProject
-build_property.ProjectDir = D:\works\c#\GraduateProject\GraduateProject\
+build_property.ProjectDir = C:\Users\Essam\Desktop\New folder\graduate-project\GraduateProject\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\works\c#\GraduateProject\GraduateProject
+build_property.MSBuildProjectDirectory = C:\Users\Essam\Desktop\New folder\graduate-project\GraduateProject
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/works/c\#/GraduateProject/GraduateProject/webApp/Pages/About.cshtml]
+[C:/Users/Essam/Desktop/New folder/graduate-project/GraduateProject/webApp/Pages/About.cshtml]
 build_metadata.AdditionalFiles.TargetPath = d2ViQXBwXFBhZ2VzXEFib3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/works/c\#/GraduateProject/GraduateProject/webApp/Pages/account/Register.cshtml]
+[C:/Users/Essam/Desktop/New folder/graduate-project/GraduateProject/webApp/Pages/account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = d2ViQXBwXFBhZ2VzXGFjY291bnRcUmVnaXN0ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/works/c\#/GraduateProject/GraduateProject/webApp/Pages/account/SignIn.cshtml]
+[C:/Users/Essam/Desktop/New folder/graduate-project/GraduateProject/webApp/Pages/account/SignIn.cshtml]
 build_metadata.AdditionalFiles.TargetPath = d2ViQXBwXFBhZ2VzXGFjY291bnRcU2lnbkluLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/works/c\#/GraduateProject/GraduateProject/webApp/Pages/ContactUs.cshtml]
+[C:/Users/Essam/Desktop/New folder/graduate-project/GraduateProject/webApp/Pages/ContactUs.cshtml]
 build_metadata.AdditionalFiles.TargetPath = d2ViQXBwXFBhZ2VzXENvbnRhY3RVcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/works/c\#/GraduateProject/GraduateProject/webApp/Pages/CreateTask.cshtml]
+[C:/Users/Essam/Desktop/New folder/graduate-project/GraduateProject/webApp/Pages/CreateTask.cshtml]
 build_metadata.AdditionalFiles.TargetPath = d2ViQXBwXFBhZ2VzXENyZWF0ZVRhc2suY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/works/c\#/GraduateProject/GraduateProject/webApp/Pages/Error.cshtml]
+[C:/Users/Essam/Desktop/New folder/graduate-project/GraduateProject/webApp/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = d2ViQXBwXFBhZ2VzXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/works/c\#/GraduateProject/GraduateProject/webApp/Pages/Features.cshtml]
+[C:/Users/Essam/Desktop/New folder/graduate-project/GraduateProject/webApp/Pages/Features.cshtml]
 build_metadata.AdditionalFiles.TargetPath = d2ViQXBwXFBhZ2VzXEZlYXR1cmVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/works/c\#/GraduateProject/GraduateProject/webApp/Pages/includes/DefaultIndexBar.cshtml]
+[C:/Users/Essam/Desktop/New folder/graduate-project/GraduateProject/webApp/Pages/includes/DefaultIndexBar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = d2ViQXBwXFBhZ2VzXGluY2x1ZGVzXERlZmF1bHRJbmRleEJhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/works/c\#/GraduateProject/GraduateProject/webApp/Pages/includes/NavBar.cshtml]
+[C:/Users/Essam/Desktop/New folder/graduate-project/GraduateProject/webApp/Pages/includes/NavBar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = d2ViQXBwXFBhZ2VzXGluY2x1ZGVzXE5hdkJhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/works/c\#/GraduateProject/GraduateProject/webApp/Pages/includes/SignedIndexBar.cshtml]
+[C:/Users/Essam/Desktop/New folder/graduate-project/GraduateProject/webApp/Pages/includes/SignedIndexBar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = d2ViQXBwXFBhZ2VzXGluY2x1ZGVzXFNpZ25lZEluZGV4QmFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/works/c\#/GraduateProject/GraduateProject/webApp/Pages/Index.cshtml]
+[C:/Users/Essam/Desktop/New folder/graduate-project/GraduateProject/webApp/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = d2ViQXBwXFBhZ2VzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/works/c\#/GraduateProject/GraduateProject/webApp/Pages/Privacy.cshtml]
+[C:/Users/Essam/Desktop/New folder/graduate-project/GraduateProject/webApp/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = d2ViQXBwXFBhZ2VzXFByaXZhY3kuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/works/c\#/GraduateProject/GraduateProject/webApp/Pages/Shared/_LoginPartial.cshtml]
+[C:/Users/Essam/Desktop/New folder/graduate-project/GraduateProject/webApp/Pages/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = d2ViQXBwXFBhZ2VzXFNoYXJlZFxfTG9naW5QYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/works/c\#/GraduateProject/GraduateProject/webApp/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/Essam/Desktop/New folder/graduate-project/GraduateProject/webApp/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = d2ViQXBwXFBhZ2VzXFNoYXJlZFxfVmFsaWRhdGlvblNjcmlwdHNQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/works/c\#/GraduateProject/GraduateProject/webApp/Pages/_ViewImports.cshtml]
+[C:/Users/Essam/Desktop/New folder/graduate-project/GraduateProject/webApp/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = d2ViQXBwXFBhZ2VzXF9WaWV3SW1wb3J0cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/works/c\#/GraduateProject/GraduateProject/webApp/Pages/_ViewStart.cshtml]
+[C:/Users/Essam/Desktop/New folder/graduate-project/GraduateProject/webApp/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = d2ViQXBwXFBhZ2VzXF9WaWV3U3RhcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/works/c\#/GraduateProject/GraduateProject/webApp/Pages/Shared/_Layout.cshtml]
+[C:/Users/Essam/Desktop/New folder/graduate-project/GraduateProject/webApp/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = d2ViQXBwXFBhZ2VzXFNoYXJlZFxfTGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = b-glhufrlvp4

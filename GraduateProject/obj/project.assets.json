@@ -2296,19 +2296,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Ali Elmorsy\\.nuget\\packages\\": {}
+    "C:\\Users\\Essam\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\works\\c#\\GraduateProject\\GraduateProject\\GraduateProject.csproj",
+      "projectUniqueName": "C:\\Users\\Essam\\Desktop\\New folder\\graduate-project\\GraduateProject\\GraduateProject.csproj",
       "projectName": "GraduateProject",
-      "projectPath": "D:\\works\\c#\\GraduateProject\\GraduateProject\\GraduateProject.csproj",
-      "packagesPath": "C:\\Users\\Ali Elmorsy\\.nuget\\packages\\",
-      "outputPath": "D:\\works\\c#\\GraduateProject\\GraduateProject\\obj\\",
+      "projectPath": "C:\\Users\\Essam\\Desktop\\New folder\\graduate-project\\GraduateProject\\GraduateProject.csproj",
+      "packagesPath": "C:\\Users\\Essam\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Essam\\Desktop\\New folder\\graduate-project\\GraduateProject\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Ali Elmorsy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Essam\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2316,7 +2316,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "D:\\Computer\\AppData\\Roaming\\Cosmos User Kit\\packages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2380,7 +2379,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

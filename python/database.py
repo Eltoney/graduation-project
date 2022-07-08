@@ -1,13 +1,17 @@
 from singleton import Singleton
-import pymssql
+import pyodbc
+
 class Database(metaclass=Singleton):
     
     def __init__(self) -> None:
-        self.connection=pymssql.connect(host="DESKTOP-7M1T1OA",user="DESKTOP-7M1T1OA\Ali Elmorsy",password="01021624394",database="GraduateProjectDatabase")
-
-    def updateTask(self,taskID,taskStatus,result=-1):
+        self.connection = pyodbc.connect('Driver={SQL Server};'
+                      'Server=DESKTOP-NHABO0O;'
+                      'Database=xray;'
+                      'Trusted_Connection=yes;')
+    def updateTask(self, taskID, taskStatus, result=-1):
         cursor=self.connection.cursor()
-        cursor.execute("update tasks set currentState = %d, result=%d where taskID=%d",(taskStatus,result,taskID))
+        cursor.execute(f"update tasks set currentState = {taskStatus}, result={result} where taskID={taskID}")
+        cursor.commit()
         cursor.close()
 
         
