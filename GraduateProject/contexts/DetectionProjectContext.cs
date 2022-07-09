@@ -31,7 +31,6 @@ namespace GraduateProject.contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-          
             modelBuilder.Entity<User>(entity =>
             {
                 entity.Property(e => e.userID).HasColumnName("userID");
@@ -39,7 +38,7 @@ namespace GraduateProject.contexts
                 entity.Property(e => e.EmailAddress)
                     .HasMaxLength(50)
                     .IsUnicode(false)
-                        .HasColumnName("emailAddress");
+                    .HasColumnName("emailAddress");
 
                 entity.Property(e => e.Password)
                     .HasMaxLength(64)
@@ -84,6 +83,8 @@ namespace GraduateProject.contexts
                 entity.Property(t => t.UserID);
                 entity.Property(t => t.CurrentState);
                 entity.Property(t => t.Result);
+                entity.Property(t => t.Gender);
+                
 
                 // entity.HasOne(t => t.User)
                 //     .WithMany(u => u.Tasks)
