@@ -19,7 +19,7 @@ public interface ITaskService
     /// <param name="user"> the user who creating that task </param>
     /// <param name="message">the output message</param>
     /// <returns>the task id or -1</returns>
-    int CreateTask(string imageLocation, int modelGender, User user, out string message);
+    int CreateTask(string imageLocation, byte modelGender, User user, out string message);
 
     /// <summary>
     /// To Check the current state of a task based on id and to ensure the user is the one who created the task we check the owner of task
@@ -49,7 +49,7 @@ internal class TaskService : ITaskService
         _dbcontext = dbcontext;
     }
 
-    public int CreateTask(string imageLocation, int modelGender, User user, out string message)
+    public int CreateTask(string imageLocation, byte modelGender, User user, out string message)
     {
         var newTask = new Task
         {

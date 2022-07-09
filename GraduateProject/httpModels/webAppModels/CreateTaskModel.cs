@@ -2,6 +2,6 @@
 
 public class CreateTaskModel
 {
-    public int Gender { get; set; }
+    public byte Gender { get; set; }
     public IFormFile File { get; set; }
 }

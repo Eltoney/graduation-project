@@ -15,5 +15,5 @@ public class Task
 
     public double Result { get; set; }
 
-    public int Gender { get; set; }
+    public byte Gender { get; set; }
 }

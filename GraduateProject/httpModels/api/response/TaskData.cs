@@ -8,5 +8,5 @@ public class TaskData
     public DateTime TaskDate { get; set; }
     public CurrentState CurrentState { get; set; }
     public double result { get; set; }
-    public int Gender { get; set; }
+    public byte Gender { get; set; }
 }
