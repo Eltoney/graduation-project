@@ -54,7 +54,7 @@ public class WebTaskController : Controller
 
         var file = model.File;
         var name = file.FileName;
-        var ext = name[..name.LastIndexOf(".", StringComparison.Ordinal)];
+        var ext = Path.GetExtension(name);
 
         if (CommonUtils.CheckImageExt(ext))
         {
@@ -67,7 +67,7 @@ public class WebTaskController : Controller
 
         await file.CopyToAsync(new FileStream(imageLocation, FileMode.Create, FileAccess.ReadWrite));
 
-        var taskId = _taskService.CreateTask(Path.GetFullPath(imageLocation), user, out string message);
+        var taskId = _taskService.CreateTask(Path.GetFullPath(imageLocation),model.Gender, user, out string message);
         if (taskId != -1)
         {
             ViewBag.sessionToken=Request.Cookies["session"];

@@ -15,10 +15,11 @@ public interface ITaskService
     /// the creation of task failed and will update failure message in reference output messgea 
     /// </summary>
     /// <param name="imageLocation">The Actual Image location on disk</param>
+    /// <param name="modelGender">the gender of the person wanna to detect his age</param>
     /// <param name="user"> the user who creating that task </param>
     /// <param name="message">the output message</param>
     /// <returns>the task id or -1</returns>
-    int CreateTask(string imageLocation, User user, out string message);
+    int CreateTask(string imageLocation, int modelGender, User user, out string message);
 
     /// <summary>
     /// To Check the current state of a task based on id and to ensure the user is the one who created the task we check the owner of task
@@ -48,7 +49,7 @@ internal class TaskService : ITaskService
         _dbcontext = dbcontext;
     }
 
-    public int CreateTask(string imageLocation, User user, out string message)
+    public int CreateTask(string imageLocation, int modelGender, User user, out string message)
     {
         var newTask = new Task
         {
@@ -57,6 +58,7 @@ internal class TaskService : ITaskService
             CurrentState = CurrentState.Idle,
             AppliedAt = DateTime.Now,
             Result = -1,
+            Gender = modelGender
         };
 
 
@@ -70,7 +72,8 @@ internal class TaskService : ITaskService
             var dict = new Dictionary<String, dynamic>()
             {
                 {"taskID", newTask.TaskID},
-                {"imageLocation", newTask.ImageLocation}
+                {"imageLocation", newTask.ImageLocation},
+                {"gender", modelGender}
             };
             var json = JsonSerializer.Serialize(dict);
 
@@ -122,19 +125,11 @@ internal class TaskService : ITaskService
     public IEnumerable<TaskData> GetTaskList(User user, out string message)
     {
         message = "Success";
-        var tasks = _dbcontext.Tasks.Where(t => t.UserID == user.userID);
-        List<TaskData> data = new List<TaskData>();
-        foreach (var task in tasks)
-        {
-            data.Add(new TaskData()
-            {
-                result = task.Result,
-                CurrentState = task.CurrentState,
-                TaskDate = task.AppliedAt,
-                TaskID = task.TaskID
-            });
-        }
+        var tasks = from task in _dbcontext.Tasks
+            where task.UserID == user.userID
+            orderby task.TaskID descending
+            select task;
 
-        return data;
+        return tasks.Select(task => new TaskData() {result = task.Result, CurrentState = task.CurrentState, TaskDate = task.AppliedAt, TaskID = task.TaskID,Gender = task.Gender}).ToList();
     }
 }

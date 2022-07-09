@@ -34,7 +34,7 @@ class TaskHandler(metaclass=Singleton):
         self.database.updateTask(task['taskID'],1)
 
         #handle result here
-        result=self.model.predictAge(task['imageLocation']) #change to its result
+        result=self.model.predictAge(task['imageLocation'],task["gender"]) #change to its result
         if result !=-1:
             self.database.updateTask(task['taskID'],2,result=result)
         else:
